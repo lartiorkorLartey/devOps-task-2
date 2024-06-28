@@ -1,5 +1,5 @@
 import './App.css'
-import {useEffect, useState} from 'react'
+import {useState} from 'react'
 import axios from 'axios'
 
 function App() {
@@ -16,13 +16,15 @@ function App() {
   }
 
   const fetchStaticUsers = async () => {
+    setDynamicData([])
     const data = await axios.get('http://localhost:4000/static-users')
     setStaticData(data.data.data)
   }
 
   const fetchDynamicUsers = async () => {
+    setStaticData([])
     const data = await axios.get('http://localhost:4000/dynamic-users')
-    setDynamicData(data.data.data)
+    setDynamicData(data.data)
   }
 
   return (
@@ -34,7 +36,7 @@ function App() {
 
       <table>
         {staticData.map((item, index) => (
-          <><tr key={index}>
+          <tbody key={index}><tr>
               <td>
                 {item.firstName}
               </td>
@@ -48,7 +50,7 @@ function App() {
                 {item.email}
               </td>
             </tr>
-          </>
+          </tbody>
         ))}
       </table>
 
@@ -57,7 +59,7 @@ function App() {
 
       <table>
         {dynamicData.map((item, index) => (
-          <><tr key={index}>
+          <tbody key={index}><tr>
               <td>
                 {item.firstName}
               </td>
@@ -71,14 +73,9 @@ function App() {
                 {item.email}
               </td>
             </tr>
-          </>
+          </tbody>
         ))}
-      </table>
-
-
-
-
-
+      </table>        
 
       <h3>Add new user</h3>
       <form >
