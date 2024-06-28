@@ -1,32 +1,87 @@
 import './App.css'
-import {useState} from 'react'
+import {useEffect, useState} from 'react'
+import axios from 'axios'
 
 function App() {
-  const [firstName, setFirstName] = useState("") 
-  const [lastName, setLastName] = useState("")
-  const [age, setAge] = useState("")
-  const [email, setEmail] = useState("")
-  // const click = () => {
-  //   alert(val)
-  // } 
+  let [firstName, setFirstName] = useState("") 
+  let [lastName, setLastName] = useState("")
+  let [age, setAge] = useState("")
+  let [email, setEmail] = useState("")
+  let [staticData, setStaticData] = useState([])
+  let [dynamicData, setDynamicData] = useState([])
 
-  // const change = () => {
-  //   setVal(event.target.value)
-  // }
+  const submit = () => {
+    const data = {firstName, lastName, age, email}
+    axios.post('http://localhost:4000/dynamic-users', data)
+  }
+
+  const fetchStaticUsers = async () => {
+    const data = await axios.get('http://localhost:4000/static-users')
+    setStaticData(data.data.data)
+  }
+
+  const fetchDynamicUsers = async () => {
+    const data = await axios.get('http://localhost:4000/dynamic-users')
+    setDynamicData(data.data.data)
+  }
 
   return (
-    // get static users
     <div>
       <h2>Users</h2>
 
       <h3>Static users</h3>
-      <button>Get users</button>
+      <button onClick={fetchStaticUsers}>Get users</button>
+
+      <table>
+        {staticData.map((item, index) => (
+          <><tr key={index}>
+              <td>
+                {item.firstName}
+              </td>
+              <td>
+                {item.lastName}
+              </td>
+              <td>
+                {item.age}
+              </td>
+              <td>
+                {item.email}
+              </td>
+            </tr>
+          </>
+        ))}
+      </table>
 
       <h3>Dynamic users</h3>
-      <button>Get users</button>
+      <button onClick={fetchDynamicUsers}>Get users</button>
+
+      <table>
+        {dynamicData.map((item, index) => (
+          <><tr key={index}>
+              <td>
+                {item.firstName}
+              </td>
+              <td>
+                {item.lastName}
+              </td>
+              <td>
+                {item.age}
+              </td>
+              <td>
+                {item.email}
+              </td>
+            </tr>
+          </>
+        ))}
+      </table>
+
+
+
+
+
 
       <h3>Add new user</h3>
-      <form>
+      <form >
         <label>First name: </label>
         <input type='text' required value={firstName}
           onChange={(e) => setFirstName(e.target.value)}
@@ -47,7 +102,7 @@ function App() {
           onChange={(e) => setEmail(e.target.value)}
         />
 
-        <button>Add</button>
+        <button type='button' onClick={(submit)}>Add</button>
       </form>
     </div> 
   )
