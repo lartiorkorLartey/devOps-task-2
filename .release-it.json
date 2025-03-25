@@ -9,7 +9,12 @@
     "after:bump": "npx auto-changelog -p"
   },
   "github":{
-    "release": true
+    "release": true,
+    "preRelease":false,
+    "tokenRef":"GITHUB_TOKEN",
+    "web": false,
+    "skipChecks":true,
+    "autoGenerate":true
   },
   "npm":{
     "publish": false

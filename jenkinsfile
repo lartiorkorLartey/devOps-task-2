@@ -1,0 +1,22 @@
+environment {
+  GITHUB_TOKEN = credentials(mygithubtoken)
+}
+
+pipeline {
+  agent any
+  tools {nodejs "nodejs"}
+
+  stages {
+    
+    stage('Release') {
+        when {
+          {
+            branch 'main';
+          }
+        }
+        steps {
+          sh 'npm run release'
+        }
+    }
+  }
+}
