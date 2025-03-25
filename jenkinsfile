@@ -13,6 +13,7 @@ pipeline {
         //     branch 'main';
         // }
         steps {
+          sh 'npm i'
           sh 'npm run release'
         }
     }
