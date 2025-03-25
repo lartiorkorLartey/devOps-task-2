@@ -9,9 +9,9 @@ pipeline {
   stages {
     
     stage('Release') {
-        // when {
-        //     branch 'main';
-        // }
+        when {
+            branch 'main';
+        }
         steps {
           sh 'npm i'
           sh 'npm run release'
