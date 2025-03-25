@@ -1,5 +1,5 @@
 environment {
-  GITHUB_TOKEN = credentials(mygithubtoken)
+  GITHUB_TOKEN = credentials(lartiorkor-gh-creds)
 }
 
 pipeline {
@@ -10,9 +10,7 @@ pipeline {
     
     stage('Release') {
         when {
-          {
             branch 'main';
-          }
         }
         steps {
           sh 'npm run release'
