@@ -14,7 +14,7 @@ pipeline {
         }
         steps {
           sh 'npm i'
-          sh 'npm run release'
+          sh 'npm run release --ci'
         }
     }
   }
