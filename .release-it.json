@@ -5,7 +5,6 @@
     "commitMessage": "chore: release v${version}"
   },
   "hooks":{
-    "before:release": "git branch --show-current",
     "after:bump": "npx auto-changelog -p"
   },
   "github":{
