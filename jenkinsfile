@@ -8,7 +8,9 @@ pipeline {
 
   stages {
     stage('init'){
-      sh 'npm i'
+      steps{
+        sh 'npm i'
+      }
     }
 
     stage('Release') {
