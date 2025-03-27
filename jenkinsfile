@@ -12,9 +12,12 @@ pipeline {
           branch 'main';
         }
         steps {
-          sh 'npm i'
-          sh 'git branch --show-current'
-          sh 'npm run release --ci'
+          // withCredentials([file(credentialsId: 'amap-usr-mgt-env', variable: 'mySecretEnvFile')]) {
+          withEnv([environment.GITHUB_TOKEN]) {
+            sh 'npm i'
+            sh 'git branch --show-current'
+            sh 'npm run release --ci'
+          }
         }
     }
   }
