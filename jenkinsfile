@@ -7,10 +7,9 @@ pipeline {
   tools {nodejs "node22"}
 
   stages {
-    
     stage('Release') {
         when {
-            branch 'main';
+          branch 'main';
         }
         steps {
           sh 'npm i'
