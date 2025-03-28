@@ -19,9 +19,11 @@ pipeline {
         }
         steps {
           // withCredentials([file(credentialsId: 'amap-usr-mgt-env', variable: 'mySecretEnvFile')]) {
-          withEnv([environment.GITHUB_TOKEN]) {
+          // withEnv([environment.GITHUB_TOKEN]) {
+            sh 'git config user.email tiorkordotdev@gmail.com'
+            sh 'git config user.name lartiorkorLartey'
             sh 'npm run release --ci'
-          }
+          // }
         }
     }
   }
