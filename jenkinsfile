@@ -1,7 +1,3 @@
-environment {
-  GITHUB_TOKEN = credentials('lartiorkor-gh-creds')
-}
-
 pipeline {
   agent any
   tools { nodejs 'node22' }
@@ -14,10 +10,16 @@ pipeline {
     }
 
     stage('Release') {
+      environment {
+        GITHUB_TOKEN = credentials('lartiorkor-gh-creds')
+      }
+
       when {
         branch 'main'
       }
+
       steps {
+        def GITHUB_TOKEN=credentials('lartiorkor-gh-creds')
         withEnv(["GITHUB_TOKEN=${GITHUB_TOKEN}"]) {
           sh 'git config user.email tiorkordotdev@gmail.com'
           sh 'git config user.name lartiorkorLartey'
