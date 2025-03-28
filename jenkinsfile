@@ -1,32 +1,29 @@
 environment {
-  GITHUB_TOKEN = credentials(lartiorkor-gh-creds)
+  GITHUB_TOKEN = credentials('lartiorkor-gh-creds')
 }
 
 pipeline {
   agent any
-  tools {nodejs "node22"}
+  tools { nodejs 'node22' }
 
   stages {
-    stage('init'){
-      steps{
+    stage('init') {
+      steps {
         sh 'npm i'
       }
     }
 
     stage('Release') {
-        when {
-          branch 'main';
+      when {
+        branch 'main'
+      }
+      steps {
+        withEnv(["GITHUB_TOKEN=${GITHUB_TOKEN}"]) {
+          sh 'git config user.email tiorkordotdev@gmail.com'
+          sh 'git config user.name lartiorkorLartey'
+          sh 'npx release-it --ci --verbose'
         }
-        steps {
-          // withCredentials([file(credentialsId: 'amap-usr-mgt-env', variable: 'mySecretEnvFile')]) {
-          // withEnv([environment.GITHUB_TOKEN]) {
-          withEnv(["GITHUB_TOKEN=${GITHUB_TOKEN}"]) {
-            sh 'git config user.email tiorkordotdev@gmail.com'
-            sh 'git config user.name lartiorkorLartey'
-            // sh 'npm run release --ci'
-            sh 'npx release-it --ci --verbose'
-          }
-        }
+      }
     }
   }
 }
