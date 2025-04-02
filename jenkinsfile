@@ -23,7 +23,7 @@ pipeline {
         withEnv(["GITHUB_TOKEN=${GITHUB_TOKEN}"]) {
           sh 'git config user.email tiorkordotdev@gmail.com'
           sh 'git config user.name lartiorkorLartey'
-          sh 'npx release-it --ci --verbose'
+          sh 'npm run release'
         }
       }
     }
