@@ -21,6 +21,7 @@
   },
   "plugins": {
     "@release-it/conventional-changelog": {
+      "whatBump": true,
       "preset": {
         "name": "conventionalcommits",
         "types": [
