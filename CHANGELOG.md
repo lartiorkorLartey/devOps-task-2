@@ -1,5 +1,11 @@
 # Changelog
 
+## [0.4.2](https://github.com/lartiorkorLartey/devOps-task-2/compare/0.4.1...0.4.2) (2025-04-07)
+
+### Bug Fixes
+
+* modify config file to generate release notes ([5015ab5](https://github.com/lartiorkorLartey/devOps-task-2/commit/5015ab5e1a29c912b12995a077e4277558a450b7))
+
 ## [0.4.1](https://github.com/lartiorkorLartey/devOps-task-2/compare/0.4.0...0.4.1) (2025-04-07)
 
 ##
