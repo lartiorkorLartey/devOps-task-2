@@ -41,6 +41,12 @@ pipeline {
       }
     }
 
+    stage('Checkout') {
+      steps {
+        sh 'git checkout main'
+      }
+    }    
+
     stage('Release') {
       environment {
         GITHUB_TOKEN = credentials('lartiorkor-gh-token')
