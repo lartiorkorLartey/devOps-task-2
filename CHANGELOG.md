@@ -1,5 +1,15 @@
 # Changelog
 
+## [0.5.0](https://github.com/lartiorkorLartey/devOps-task-2/compare/0.4.2...0.5.0) (2025-04-07)
+
+### Features
+
+* add feat ([8fa61fb](https://github.com/lartiorkorLartey/devOps-task-2/commit/8fa61fb169d9f477f0da27ac9f6876427135e466))
+
+### Bug Fixes
+
+* add fix ([abcac39](https://github.com/lartiorkorLartey/devOps-task-2/commit/abcac39a920c2d18b8562dc871d6d4876aa8fc07))
+
 ## [0.4.2](https://github.com/lartiorkorLartey/devOps-task-2/compare/0.4.1...0.4.2) (2025-04-07)
 
 ### Bug Fixes
