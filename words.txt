@@ -2,3 +2,4 @@ random txt file to test out release configs
 goat
 add feat
 add chore
+add fix
