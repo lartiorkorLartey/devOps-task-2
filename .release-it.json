@@ -24,6 +24,9 @@
       "whatBump": true,
       "infile": "CHANGELOG.md",
       "header": "# Changelog",
+      "writerOpts": {
+        "groupBy": "type"
+      },
       "preset": {
         "name": "conventionalcommits",
         "types": [
