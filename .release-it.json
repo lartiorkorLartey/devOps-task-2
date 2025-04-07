@@ -5,16 +5,14 @@
     "commitMessage": "chore: release v${version}"
   },
   "hooks":{
-    "before:init": "git checkout main",
-    "after:bump": "npx auto-changelog -p"
+    "before:init": "git checkout main"
   },
   "github":{
     "release": true,
     "preRelease":false,
     "tokenRef":"GITHUB_TOKEN",
     "web": false,
-    "skipChecks":true,
-    "autoGenerate":true
+    "skipChecks":true
   },
   "npm":{
     "publish": false
@@ -39,7 +37,8 @@
             "section": "Bug Fixes"
           }
         ]
-      }
+      },
+      "releaseBody": true
     }
   }
 }
