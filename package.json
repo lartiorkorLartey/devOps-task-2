@@ -2,8 +2,7 @@
   "engines": {
     "node": ">=18.18.0"
   },
-  "name": "vite-project",
-  "private": true,
+  "name": "@lartiorkor-org/vite-project",
   "version": "0.6.0",
   "type": "module",
   "scripts": {
