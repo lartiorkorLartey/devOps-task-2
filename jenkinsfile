@@ -1,72 +1,41 @@
-// pipeline {
-//   agent any
-//   tools { nodejs 'node22' }
-
-//   stages {
-//     stage('init') {
-//       steps {
-//         sh 'npm i'
-//       }
-//     }
-
-//     stage('Release') {
-//       environment {
-//         GITHUB_TOKEN = credentials('lartiorkor-gh-creds')
-//       }
-
-//       when {
-//         branch 'main'
-//       }
-
-//       steps {
-//         // def GITHUB_TOKEN=credentials('lartiorkor-gh-creds')
-//         // withEnv(["GITHUB_TOKEN=${GITHUB_TOKEN}"]) {
-//           sh 'git config user.email tiorkordotdev@gmail.com'
-//           sh 'git config user.name lartiorkorLartey'
-//           sh 'npm run release'
-//         // }
-//       }
-//     }
-//   }
-
+def registryUrl = "https://registry.npmjs.org"
 
 pipeline {
   agent any
+
   tools { nodejs 'node22' }
 
+  environment {
+    NPM_TOKEN = credentials('lartiorkor-npm-token')
+  }
+
   stages {
-    stage('init') {
+    stage('Install Dependencies') {
       steps {
         sh 'npm i'
       }
     }
 
-    stage('Checkout') {
+    stage('Build') {
       steps {
-        sh 'git checkout main'
+        sh 'npm run build'
       }
-    }    
+    }
 
-    stage('Release') {
-      environment {
-        GITHUB_TOKEN = credentials('lartiorkor-gh-token')
-      }
-
+    stage('Publish To NPM') {
       when {
         branch 'main'
       }
-
       steps {
-        sh 'git config user.email tiorkordotdev@gmail.com'
-        sh 'git config user.name lartiorkorLartey'
-
-        withCredentials([usernamePassword(credentialsId: 'lartiorkor-gh-creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
-          sh 'git remote set-url origin "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/lartiorkorLartey/devOps-task-2.git"'
-          sh 'git push --follow-tags'
-        }
-
-        sh 'npm run release'
+        sh 'npm publish'
+        
       }
+    }
+  }
+
+  post {
+    always {
+      cleanWs()
     }
   }
 }
