@@ -29,7 +29,7 @@ pipeline {
       steps {
         sh "echo '//registry.npmjs.org/:_authToken=\${NPM_TOKEN}' > .npmrc"
         sh 'npm publish'
-        // sh 'rm .npmrc'
+        sh 'rm .npmrc'
       }
     }
   }
