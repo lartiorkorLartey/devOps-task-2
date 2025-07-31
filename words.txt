@@ -3,3 +3,5 @@ goat
 add feat
 add chore
 add fix
+
+nothing new to add, just testing semantic versioning for ci
