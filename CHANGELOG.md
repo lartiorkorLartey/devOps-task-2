@@ -1,5 +1,16 @@
 # Changelog
 
+## [0.6.0](https://github.com/lartiorkorLartey/devOps-task-2/compare/0.5.0...0.6.0) (2025-04-07)
+
+### Features
+
+* explicitly checkout to main ([3eca182](https://github.com/lartiorkorLartey/devOps-task-2/commit/3eca1826078eb697e15657e87e5a55e093616520))
+
+### Bug Fixes
+
+* modify jenkinsfile ([465c7aa](https://github.com/lartiorkorLartey/devOps-task-2/commit/465c7aa61971061678be9e71cc2e1e4415726245))
+* modify jenkinsfile to correctly reference creds ([19bfb2d](https://github.com/lartiorkorLartey/devOps-task-2/commit/19bfb2db86301755ad1ee9ee32eeaea586e8fd35))
+
 ## [0.5.0](https://github.com/lartiorkorLartey/devOps-task-2/compare/0.4.2...0.5.0) (2025-04-07)
 
 ### Features
