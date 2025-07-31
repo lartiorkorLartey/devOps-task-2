@@ -7,6 +7,7 @@ pipeline {
 
   environment {
     NPM_TOKEN = credentials('lartiorkor-npm-token')
+    // GITHUB_TOKEN = credentials('lartiorkor-gh-token')
   }
 
   stages {
@@ -27,9 +28,10 @@ pipeline {
         branch 'main'
       }
       steps {
-        sh "echo '//registry.npmjs.org/:_authToken=\${NPM_TOKEN}' > .npmrc"
-        sh 'npm publish --access public'
-        sh 'rm .npmrc'
+        // sh "echo '//registry.npmjs.org/:_authToken=\${NPM_TOKEN}' > .npmrc"
+        // sh 'npm publish --access public'
+        // sh 'rm .npmrc'
+        sh 'npx semantic-release'
       }
     }
   }
