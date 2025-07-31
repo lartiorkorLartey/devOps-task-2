@@ -28,7 +28,7 @@ pipeline {
       }
       steps {
         sh "echo '//registry.npmjs.org/:_authToken=\${NPM_TOKEN}' > .npmrc"
-        sh 'npm publish --access restricted'
+        sh 'npm publish --access public'
         sh 'rm .npmrc'
       }
     }
