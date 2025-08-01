@@ -25,7 +25,7 @@ pipeline {
 
     stage('Publish To NPM') {
       when {
-        branch 'main'
+        branch 'test'
       }
       steps {
         // sh "echo '//registry.npmjs.org/:_authToken=\${NPM_TOKEN}' > .npmrc"
@@ -38,7 +38,7 @@ pipeline {
         withCredentials([usernamePassword(credentialsId: 'lartiorkor-gh-creds', usernameVariable: 'GIT_USERNAME', passwordVariable: 'GIT_PASSWORD')]) {
           sh 'git remote set-url origin "https://${GIT_USERNAME}:${GIT_PASSWORD}@github.com/${GIT_USERNAME}/devOps-task-2.git"'
         //   sh 'git push --follow-tags'
-            sh 'git push origin HEAD:main'
+            sh 'git push origin HEAD:test'
         }
         sh 'npx semantic-release'
       }
